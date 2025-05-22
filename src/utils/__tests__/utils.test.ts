@@ -5,8 +5,8 @@ import {
   calculateOrdersAverage,
   formatTotalPrice,
   sortOrders,
-} from "./utils"; // Adjust the path if needed
-import { SortDate } from "../models/constants/enums";
+} from "../utils"; // Adjust the path if needed
+import { SortDate } from "../../models/constants/enums";
 
 const sampleOrders = [
   { id: 1, total: 100, date: "2024-05-10" },
