@@ -40,22 +40,24 @@ const DetailedCustomerModal = (props: IDetailedCustomerModalProps) => {
       <DialogTitle>{selectedCustomer?.name}</DialogTitle>
 
       <DialogContent dividers>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={2}
-        >
-          <Typography variant="subtitle1">Sort by Date:</Typography>
-          <Select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value as SortDate)}
-            size="small"
+        {sortedOrders.length > 0 && (
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            mb={2}
           >
-            <MenuItem value={SortDate.ASC}>Oldest First</MenuItem>
-            <MenuItem value={SortDate.DESC}>Newest First</MenuItem>
-          </Select>
-        </Box>
+            <Typography variant="subtitle1">Sort by Date:</Typography>
+            <Select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value as SortDate)}
+              size="small"
+            >
+              <MenuItem value={SortDate.ASC}>Oldest First</MenuItem>
+              <MenuItem value={SortDate.DESC}>Newest First</MenuItem>
+            </Select>
+          </Box>
+        )}
 
         <Table>
           <TableHead>
@@ -65,6 +67,7 @@ const DetailedCustomerModal = (props: IDetailedCustomerModalProps) => {
               <TableCell>Date</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {sortedOrders.map((order: IOrder) => (
               <TableRow key={order.id}>
@@ -78,12 +81,20 @@ const DetailedCustomerModal = (props: IDetailedCustomerModalProps) => {
           </TableBody>
         </Table>
 
-        <Typography variant="subtitle1" textAlign="right" mt={2}>
-          Average Order Value:{" "}
-          <strong>
-            {formatTotalPrice(calculateOrdersAverage(selectedCustomer.orders))}
-          </strong>
-        </Typography>
+        {sortedOrders.length ? (
+          <Typography variant="subtitle1" textAlign="right" mt={2}>
+            Average Order Value:{" "}
+            <strong>
+              {formatTotalPrice(
+                calculateOrdersAverage(selectedCustomer.orders)
+              )}
+            </strong>
+          </Typography>
+        ) : (
+          <Typography variant="subtitle1" textAlign="left" mt={2}>
+            <strong>No orders available.</strong>
+          </Typography>
+        )}
       </DialogContent>
 
       <DialogActions>
