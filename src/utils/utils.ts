@@ -1,16 +1,16 @@
 import { SortDate } from "../models/constants/enums";
 import type { IOrder } from "../models/interfaces";
 
-export const extractFirstName = (fullName: string) => {
+export const extractFirstName = (fullName?: string | null) => {
   if (!fullName) {
-    return fullName;
+    return fullName; // returns null or undefined or empty string as is
   }
 
   const splittedNames = fullName.split(" ");
   return splittedNames[0];
 };
 
-export const calculateOrdersTotalAmount = (orders: IOrder[]) => {
+export const calculateOrdersTotalAmount = (orders?: IOrder[] | null) => {
   if (!orders || !orders.length) {
     return 0;
   }
@@ -18,7 +18,7 @@ export const calculateOrdersTotalAmount = (orders: IOrder[]) => {
   return orders.reduce((sum, order) => sum + order.total, 0);
 };
 
-export const calculateOrdersAverage = (orders: IOrder[]) => {
+export const calculateOrdersAverage = (orders: IOrder[] | null) => {
   if (!orders || !orders.length) {
     return 0;
   }

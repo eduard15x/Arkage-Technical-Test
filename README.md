@@ -1,10 +1,9 @@
-# React + TypeScript + Vite
-
 # Customer Orders Dashboard
 
 A React + Vite + TypeScript application to view customer orders.
 
 ## STACK
+
 - React
 - Vite
 - TypeScript
@@ -19,7 +18,7 @@ A React + Vite + TypeScript application to view customer orders.
 ## INSTALLATION
 
 1. Clone the repository
-"git clone https://github.com/eduard15x/Arkage-Technical-Test.git"
+"git clone <https://github.com/eduard15x/Arkage-Technical-Test.git>"
 "cd Arkage-Technical-Test"
 
 2. Install dependencies

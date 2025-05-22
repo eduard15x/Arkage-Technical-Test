@@ -1,13 +1,15 @@
 # Developer Coding Challenge
 
 ## Overview
+
 This test is designed to evaluate your skills in array and object manipulation, DOM handling, and basic React (if you choose to use it). You are free to use either **Vanilla JavaScript** or **React**. There is no preferred framework for this test, only clarity, code quality, and performance matter.
 
 ---
 
 ## Requirements
 
-### Scenario:
+### Scenario
+
 You are given a JSON array of customers. Each customer has basic details (id, name, email) and a list of orders. Each order includes the order id, amount, and date.
 
 ```json
@@ -58,7 +60,7 @@ You are given a JSON array of customers. Each customer has basic details (id, na
 ]
 ```
 
-### Tasks:
+### Tasks
 
 1. **Display a list of all customers** on a main page. For each customer, show:
     - Name
@@ -69,13 +71,13 @@ You are given a JSON array of customers. Each customer has basic details (id, na
 Example Output:
 
 ```json
-   Customer: Alice  
-   Total Amount: €325.5  
-   Number of Orders: 2  
+   Customer: Alice
+   Total Amount: €325.5
+   Number of Orders: 2
    [View Orders]
 ```
 
-2. **When clicking a View Orders link**, open a **detail modal/page** that shows:
+2. **When clicking a View Orders link**, open a **detail modal/page** that shows
     - The customer’s name and surname
     - A list of their orders with:
         - Order ID
@@ -92,15 +94,16 @@ Example Output:
 ---
 
 ## Technical Notes
+
 - If you use React, you can use functional components and hooks.
 - Styling is not required, but keep the layout readable.
 
 ---
 
 ## Submission
+
 - Submit your code as a zip or via GitHub.
 - Include a `README.md` with instructions to run the app locally.
 - If using React, specify whether it's Vite, Create React App, etc.
 
 Good luck! 🚀
-
