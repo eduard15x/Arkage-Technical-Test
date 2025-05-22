@@ -3,13 +3,15 @@ import { CustomerCard } from "./components/CustomerCard";
 import { customers } from "./models/constants/customers";
 import type { ICustomer } from "./models/interfaces";
 import DetailedCustomerModal from "./components/DetailedCustomerModal";
+import { Box, TextField } from "@mui/material";
 
 export const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState<ICustomer | null>(
     null
   );
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const handleCustomerSelection = (customerId: number) => {
+  const handleViewOrders = (customerId: number) => {
     const selectedCustomer = customers.find(
       (customer) => customer.id === customerId
     );
@@ -23,27 +25,37 @@ export const App = () => {
     setSelectedCustomer(null);
   };
 
-  return (
-    <div>
-      <div>
-        {customers.map((customer) => (
-          <div key={customer.id} style={{ marginBottom: "20px" }}>
-            <CustomerCard
-              customer={customer}
-              onViewOrder={handleCustomerSelection}
-            />
-          </div>
-        ))}
-      </div>
+  const filteredCustomers = customers.filter((customer) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      customer.name.toLowerCase().includes(term) ||
+      customer.email.toLowerCase().includes(term)
+    );
+  });
 
-      {selectedCustomer ? (
+  return (
+    <Box sx={{ p: 4 }}>
+      <TextField
+        label="Search customers"
+        variant="outlined"
+        fullWidth
+        sx={{ mb: 3 }}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search by name or email"
+      />
+      {filteredCustomers.map((customer) => (
+        <Box key={customer.id} mb={2}>
+          <CustomerCard customer={customer} onViewOrders={handleViewOrders} />
+        </Box>
+      ))}
+
+      {selectedCustomer && (
         <DetailedCustomerModal
           selectedCustomer={selectedCustomer}
           onClose={handleCloseModal}
         />
-      ) : (
-        <div>nu e selectat</div>
       )}
-    </div>
+    </Box>
   );
 };
