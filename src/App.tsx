@@ -36,6 +36,14 @@ export const App = () => {
         ))}
       </div>
 
+      {selectedCustomer ? (
+        <DetailedCustomerModal
+          selectedCustomer={selectedCustomer}
+          onClose={handleCloseModal}
+        />
+      ) : (
+        <div>nu e selectat</div>
+      )}
     </div>
   );
 };
